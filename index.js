@@ -26,7 +26,8 @@ async function run() {
     const todoCollection = client.db("todo").collection("notes");
     // Get a user TOdos
     app.get('/todo', async (req, res) => {
-      const query = {};
+      const email = req.query.email;
+      const query = {email};
       const result = await todoCollection.find(query).toArray();
       res.send(result)
     });
